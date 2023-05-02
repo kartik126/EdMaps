@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <title>Estatedekho - East Bangalore</title>
+    <style>
+      #popup {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border: 1px solid #000;
+        padding: 20px;
+        z-index: 999;
+        height: fit-content;
+        width: 200px;
+      }
+      #detail-popup {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border: 1px solid #000;
+        padding: 20px;
+        z-index: 999;
+        height: fit-content;
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- projects popup start -->
+
+    <div id="popup">
+      <i
+        class="material-icons cursor-pointer absolute right-3 top-3"
+        onclick="closePopup()"
+        >close</i
+      >
+      <p class="text-center font-bold">Projects</p>
+      <p class="text-center hover:cursor-pointer" onclick="openDetailPopup()">
+        Project 1
+      </p>
+      <p class="text-center hover:cursor-pointer" onclick="openDetailPopup()">
+        Project 2
+      </p>
+      <p class="text-center hover:cursor-pointer" onclick="openDetailPopup()">
+        Project 3
+      </p>
+      <p class="text-center hover:cursor-pointer" onclick="openDetailPopup()">
+        Project 4
+      </p>
+      <p class="text-center hover:cursor-pointer" onclick="openDetailPopup()">
+        Project 5
+      </p>
+    </div>
+    <!-- project popup end -->
+
+    <!-- project detail popup -->
+    <div id="detail-popup">
+      <i
+        class="material-icons cursor-pointer absolute right-3 top-3"
+        onclick="closeDetailPopup()"
+        >close</i
+      >
+      <p class="text-center font-bold">Project detail</p>
+    </div>
+    <!-- project detail popup end -->
+    <div class="py-10 flex flex-col justify-end items-center h-fit">
+      <h1 class="text-[25px] font-medium text-blue-600">East Bangalore</h1>
+      <div
+        class="border-[0.1rem] h-[5px] border-blue-600 transform origin-top-left rotate-[40deg] relative top-20 lg:w-[50%] sm:w-[90%] md:w-[50%]"
+      >
+        <div
+          class="relative -top-[40px] -left-[80px] rounded-full flex items-center justify-center bg-gray-300 w-20 h-20"
+          onclick="openPopup()"
+        >
+          <p class="text-center text-xs text-black font-medium">
+            Central Bangalore
+          </p>
+        </div>
+        <div
+          class="absolute bg-white hover:bg-blue-600 -top-[7px] left-5 border-[0.13rem] border-blue-600 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+          onclick="openPopup()"
+        >
+          <p class="absolute -top-[50px] mb-10 text-sm font-medium">
+            Indira Nagar
+          </p>
+        </div>
+        <div
+          class="absolute bg-white hover:bg-blue-600 -top-[7px] left-[6rem] border-[0.13rem] border-blue-600 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+          onclick="openPopup()"
+        >
+          <p class="absolute -top-[50px] mb-10 text-sm font-medium">KR Puram</p>
+        </div>
+        <div
+          class="bg-white hover:bg-blue-600 absolute -top-[7px] right-[20px] border-[0.13rem] border-blue-600 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+          onclick="openPopup()"
+        >
+          <p class="absolute -top-[50px] mb-10 text-sm font-medium">
+            Yeshwanthpur
+          </p>
+        </div>
+        <div
+          onclick="openPopup()"
+          class="bg-white hover:bg-blue-600 absolute -top-[7px] right-[100px] border-[0.13rem] border-blue-600 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+        >
+          <p class="absolute -top-[50px] mb-10 text-sm font-medium">Hooskote</p>
+        </div>
+
+        <div
+          class="py-5 absolute left-[10px] top-1 h-[270px] w-[450px] overflow-hidden transform rotate-[180deg]"
+        >
+          <div
+            class="flex flex-row justify-center border-2 border-green-400 w-[550px] h-[430px] rounded-full"
+          >
+            <div
+              class="bg-white hover:bg-green-400 absolute right-0 top-[35px] border-[0.13rem] border-green-400 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+              onclick="openPopup()"
+            >
+              <p class="mt-5 text-sm transform rotate-[125deg] font-medium">
+                Bellandur
+              </p>
+            </div>
+            <div
+              class="bg-white hover:bg-green-400 absolute right-[50px] top-[17px] border-[0.13rem] border-green-400 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+              onclick="openPopup()"
+            >
+              <p class="font-medium mt-5 text-sm transform rotate-[125deg]">
+                Panthur
+              </p>
+            </div>
+            <div
+              class="bg-white hover:bg-green-400 absolute right-[100px] top-[10px] border-[0.13rem] border-green-400 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+              onclick="openPopup()"
+            >
+              <p class="font-medium mt-5 text-sm transform rotate-[125deg]">
+                Balagere
+              </p>
+            </div>
+            <div
+              class="bg-white hover:bg-green-400 absolute right-[150px] top-[10px] border-[0.13rem] border-green-400 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+              onclick="openPopup()"
+            >
+              <p class="font-medium mt-5 text-sm transform rotate-[125deg]">
+                Varthur
+              </p>
+            </div>
+            <div
+              class="bg-white hover:bg-green-400 absolute right-[200px] top-[10px] border-[0.13rem] border-green-400 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+              onclick="openPopup()"
+            >
+              <p class="font-medium mt-5 text-sm transform rotate-[125deg]">
+                Whitefield
+              </p>
+            </div>
+            <div
+              class="bg-white hover:bg-green-400 absolute left-[160px] top-[15px] border-[0.13rem] border-green-400 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+              onclick="openPopup()"
+            >
+              <p class="font-medium mt-5 text-sm transform rotate-[125deg]">
+                Kadugadi
+              </p>
+            </div>
+            <div
+              class="bg-white hover:bg-green-400 absolute left-[100px] top-[40px] border-[0.13rem] border-green-400 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+              onclick="openPopup()"
+            >
+              <p class="font-medium mt-5 text-sm transform rotate-[125deg]">
+                Belathur
+              </p>
+            </div>
+            <div
+              class="bg-white hover:bg-green-400 absolute left-10 top-[90px] border-[0.13rem] border-green-400 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+              onclick="openPopup()"
+            >
+              <p class="font-medium mt-5 text-sm transform rotate-[100deg]">
+                Beegehalli
+              </p>
+            </div>
+            <div
+              class="bg-white hover:bg-green-400 absolute left-1 bottom-[90px] border-[0.13rem] border-green-400 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+              onclick="openPopup()"
+            >
+              <p class="font-medium mt-5 text-xs transform rotate-[75deg]">
+                Kannamangala
+              </p>
+            </div>
+            <div
+              class="bg-white hover:bg-orange-400 absolute right-20 bottom-[90px] border-[0.13rem] border-orange-400 w-[1.2rem] h-[1.2rem] rounded-full cursor-pointer"
+              onclick="openPopup()"
+            >
+              <p class="mt-5 text-xs font-medium transform rotate-[125deg]">
+                Marathalli
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function openPopup() {
+      var popup = document.getElementById("popup");
+      popup.style.display = "block";
+    }
+    function closePopup() {
+      var popup = document.getElementById("popup");
+      popup.style.display = "none";
+    }
+    function openDetailPopup() {
+      var popup = document.getElementById("detail-popup");
+      popup.style.display = "block";
+    }
+    function closeDetailPopup() {
+      var popup = document.getElementById("detail-popup");
+      popup.style.display = "none";
+    }
+  </script>
+</html>

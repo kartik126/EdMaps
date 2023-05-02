@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <title>Estatedekho</title>
+    <style>
+      #location-container {
+        cursor: move;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      #popup {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border: 1px solid #000;
+        padding: 20px;
+        z-index: 999;
+        height: 500px;
+        width: 200px;
+      }
+      #detail-popup {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border: 1px solid #000;
+        padding: 20px;
+        z-index: 999;
+        height: 500px;
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- projects popup start -->
+
+    <div id="popup">
+      <i
+        class="material-icons cursor-pointer absolute right-3 top-3"
+        onclick="closePopup()"
+        >close</i
+      >
+      <p class="text-center font-bold">Projects</p>
+      <p class="text-center hover:cursor-pointer" onclick="openDetailPopup()">
+        Project 1
+      </p>
+      <p class="text-center hover:cursor-pointer">Project 2</p>
+      <p class="text-center hover:cursor-pointer">Project 3</p>
+      <p class="text-center hover:cursor-pointer">Project 4</p>
+      <p class="text-center hover:cursor-pointer">Project 5</p>
+    </div>
+    <!-- project popup end -->
+
+    <!-- project detail popup -->
+    <div id="detail-popup">
+      <i
+        class="material-icons cursor-pointer absolute right-3 top-3"
+        onclick="closeDetailPopup()"
+        >close</i
+      >
+      <p class="text-center font-bold">Project detail</p>
+    </div>
+    <!-- project detail popup end -->
+
+    <div
+      class="relative h-[100vh] lg:overflow-x-scroll items-center cursor-grab"
+    >
+      <div
+        id="location-container"
+        class="relative bottom-0 left-0 right-0 flex flex-col items-center h-[100%]"
+      >
+        <div
+          id="container"
+          class="flex flex-col justify-center items-center w-[100%] h-[100%]"
+        >
+          <div
+            class="bg-white border-2 border-black-500 w-[65px] h-[75px] flex flex-col items-center z-10 p-1 absolute right-0 left-[55%]"
+          >
+            <img
+              class="bg-white p-2"
+              src="./images/Hyderabad.png"
+              style="width: 50px; height: 50px"
+            />
+            <p class="text-[10px] font-bold">Hyderabad</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let locations = [
+        {
+          name: "SHANKARPALLI ZONE",
+          color: "red",
+          status: false,
+          count: 22,
+          project: [
+            { location: "Pedda Amberpet" },
+            { location: "Ramoji Film City" },
+            { location: "Choutuppal" },
+            { location: "Chityala" },
+          ],
+        },
+        {
+          name: "MUMBAI HIGHWAY",
+          color: "blue",
+          status: false,
+          count: 30,
+          project: [
+            { location: "Pedda Amberpet" },
+            { location: "Ramoji Film City" },
+            { location: "Choutuppal" },
+            { location: "Chityala" },
+          ],
+        },
+        {
+          name: "Nagpur HIGHWAY",
+          color: "cyan",
+          status: false,
+          count: 10,
+          project: [
+            { location: "Pedda Amberpet" },
+            { location: "Ramoji Film City" },
+            { location: "Choutuppal" },
+            { location: "Chityala" },
+          ],
+        },
+        {
+          name: "KARIMNAGAR HIGHWAY",
+          color: "indigo",
+          status: false,
+          count: 5,
+          project: [
+            { location: "Pedda Amberpet" },
+            { location: "Ramoji Film City" },
+            { location: "Choutuppal" },
+            { location: "Chityala" },
+          ],
+        },
+        {
+          name: "WARANGAL HIGHWAY",
+          color: "green",
+          status: false,
+          count: 50,
+          project: [
+            { location: "Pedda Amberpet" },
+            { location: "Ramoji Film City" },
+            { location: "Choutuppal" },
+            { location: "Chityala" },
+          ],
+        },
+        {
+          name: "VIJAYWADA HIGHWAY",
+          color: "teal",
+          status: false,
+          count: 80,
+          project: [
+            { location: "Pedda Amberpet" },
+            { location: "Ramoji Film City" },
+            { location: "Choutuppal" },
+            { location: "Chityala" },
+          ],
+        },
+        {
+          name: "NAGARJUNA/SAGAR HIGHWAY",
+          color: "gray",
+          status: false,
+          count: 40,
+          project: [
+            { location: "Pedda Amberpet" },
+            { location: "Ramoji Film City" },
+            { location: "Choutuppal" },
+            { location: "Chityala" },
+          ],
+        },
+        {
+          name: "SRISAILAM HIGHWAY",
+          color: "violet",
+          status: false,
+          count: 25,
+          project: [
+            { location: "Pedda Amberpet" },
+            { location: "Ramoji Film City" },
+            { location: "Choutuppal" },
+            { location: "Chityala" },
+          ],
+        },
+        {
+          name: "BANGALORE HIGHWAY",
+          color: "orange",
+          status: false,
+          count: 30,
+          project: [
+            { location: "Pedda Amberpet" },
+            { location: "Ramoji Film City" },
+            { location: "Choutuppal" },
+            { location: "Chityala" },
+          ],
+        },
+      ];
+
+      const container = document.getElementById("container");
+
+      locations.map((location, index) => {
+        const div = document.createElement("div");
+        div.style.borderBottom = `3px solid ${location.color}`;
+        div.style.width = "15%";
+        div.style.height = "1px";
+        div.style.transform = `rotate(${(index + 3) * 40}deg)`;
+        div.classList.add(
+          "border-b-[0.1rem]",
+          "transform",
+          "origin-top-right",
+          "rotate-[35deg]"
+        );
+
+        location.project.map((value, index2) => {
+          const div1 = document.createElement("div");
+          div1.style.position = "absolute";
+          div1.style.right = `${(index2 + 2) * 50}%`;
+          div1.style.border = `1.7px solid ${location.color}`;
+          div1.style.borderColor = `${location.color}`;
+          div1.style.width = "55%";
+          div1.style.height = "6px";
+          div1.style.top = "-2px";
+          div1.style.transform = "rotate(360deg)";
+          div1.setAttribute("id", "display");
+
+          div.appendChild(div1);
+          if ((index + 3) * 40 < 241) {
+            const p = document.createElement("p");
+            p.textContent = location.name;
+            p.style.color = location.color;
+            p.style.transform = "rotate(180deg)";
+            p.classList.add(
+              "absolute",
+              "text-center",
+              "right-[42px]",
+              "top-5",
+              "w-[50%]",
+              "rounded-xs",
+              "lg:text-[10px]",
+              "sm:text-[7px]",
+              "md:text-[7px]",
+              "font-medium"
+            );
+            div.appendChild(p);
+          } else {
+            const p = document.createElement("p");
+            p.textContent = location.name;
+            p.style.color = location.color;
+            p.classList.add(
+              "absolute",
+              "text-center",
+              "right-[42px]",
+              "top-5",
+              "w-[50%]",
+              "rounded-xs",
+              "text-[10px]",
+              "font-medium"
+            );
+            div.appendChild(p);
+          }
+
+          const div2 = document.createElement("div");
+          div2.style.border = `1.4px solid ${location.color}`;
+          div2.style.height = "1.5rem";
+          div2.style.width = "1.5rem";
+          div2.style.cursor = "pointer";
+          div2.style.borderRadius = "100%";
+          div2.style.position = "absolute";
+          div2.style.right = `${(index2 + 2) * 50}%`;
+          div2.style.top = "-10px";
+          div2.style.background = "#fff";
+          div.appendChild(div2);
+          div2.addEventListener("click", () => openPopup());
+
+          if ((index + 3) * 40 < 241) {
+            const p = document.createElement("p");
+            p.textContent = `${value.location}`;
+            p.style.transform = "rotate(180deg)";
+            p.classList.add(
+              "absolute",
+              "text-center",
+              "right-15",
+              "top-5",
+              "w-[50%]",
+              "rounded-xs",
+              "text-xs",
+              "font-bold"
+            );
+            div2.appendChild(p);
+          } else {
+            const p = document.createElement("p");
+            p.textContent = `${value.location}`;
+            p.classList.add(
+              "absolute",
+              "text-center",
+              "right-15",
+              "top-5",
+              "w-[50%]",
+              "rounded-xs",
+              "text-xs",
+              "font-bold"
+            );
+            div2.appendChild(p);
+          }
+        });
+
+        const innerDiv = document.createElement("div");
+        innerDiv.style.borderColor = location.color;
+        innerDiv.style.position = "absolute";
+        innerDiv.style.top = "-10px";
+        innerDiv.style.border = `1.5px solid ${location.color}`;
+        innerDiv.style.width = "1.5rem";
+        innerDiv.style.height = "1.5rem";
+        innerDiv.style.marginLeft = "1rem";
+        innerDiv.style.backgroundColor = "white";
+        innerDiv.classList.add(
+          "cursor-pointer",
+          "rounded-full",
+          "border-[0.1rem]"
+        );
+        innerDiv.addEventListener("click", () => {
+          handleClick(index);
+        });
+
+        div.appendChild(innerDiv);
+        container.appendChild(div);
+      });
+
+      function handleClick(e) {
+        let updatedArray = [...locations];
+        locations[e].status = !locations[e].status;
+        locations = updatedArray;
+        console.log(`Clicked on location ${updatedArray[e].status}`);
+      }
+
+      function openPopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "block";
+      }
+      function closePopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "none";
+      }
+      function openDetailPopup() {
+        var popup = document.getElementById("detail-popup");
+        popup.style.display = "block";
+      }
+      function closeDetailPopup() {
+        var popup = document.getElementById("detail-popup");
+        popup.style.display = "none";
+      }
+    </script>
+    <script>
+      var dragElement = document.getElementById("location-container");
+
+      var pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
+      dragElement.onmousedown = dragMouseDown;
+
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+      }
+
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        dragElement.style.top = dragElement.offsetTop - pos2 + "px";
+        dragElement.style.left = dragElement.offsetLeft - pos1 + "px";
+      }
+            
+      function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    </script>
+  </body>
+</html>
